@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TestGuru.
+First RAILS project with Thinknetica!
 
-Things you may want to cover:
 
-* Ruby version
+# Versions:
+  ruby: 2.7.6p219
+  rails: 6.1.6.1
 
-* System dependencies
+# Entities:
+  User: base user
+    Admin: super user to add questions and answers
+    Participant: test participant user
+  Question: question entity
+  Results: results of tests for different participants
+  Leaderboard?
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
