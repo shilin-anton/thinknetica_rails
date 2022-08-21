@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyText
+  surname: MyText
+  is_admin: false
+  score: 
+
+two:
+  first_name: MyText
+  surname: MyText
+  is_admin: false
+  score: 
