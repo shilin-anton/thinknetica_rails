@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_104916) do
+ActiveRecord::Schema.define(version: 2022_08_22_192030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.boolean "correct", default: false, null: false
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
+    t.bigint "user_id_id", null: false
+    t.bigint "question_id_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id_id"], name: "index_answers_on_question_id_id"
+    t.index ["user_id_id"], name: "index_answers_on_user_id_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -31,26 +33,31 @@ ActiveRecord::Schema.define(version: 2022_08_21_104916) do
 
   create_table "questions", force: :cascade do |t|
     t.text "body", null: false
-    t.integer "test_id"
+    t.bigint "test_id_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_id_id"], name: "index_questions_on_test_id_id"
   end
 
   create_table "tests", force: :cascade do |t|
     t.text "title", null: false
     t.integer "level", default: 0, null: false
-    t.integer "category_id"
+    t.bigint "category_id_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id_id"], name: "index_tests_on_category_id_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.text "first_name", null: false
     t.text "surname"
-    t.boolean "is_admin"
-    t.integer "score"
+    t.boolean "is_admin", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "answers", "questions", column: "question_id_id"
+  add_foreign_key "answers", "users", column: "user_id_id"
+  add_foreign_key "questions", "tests", column: "test_id_id"
+  add_foreign_key "tests", "categories", column: "category_id_id"
 end
