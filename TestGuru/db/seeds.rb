@@ -22,6 +22,8 @@ test4 = Test.create(category_id: cat2.id, title: 'JavaScript', level: 1)
 test5 = Test.create(category_id: cat3.id, title: 'HTML', level: 1)
 test6 = Test.create(category_id: cat3.id, title: 'REST API', level: 1)
 
+user3 = User.create(first_name: 'TestCreator', surname: 'CreatorTestov', is_admin: false, created_test_id: test1.id)
+
 user_test1 = UserTest.create(user_id: user1.id, test_id: test1.id)
 user_test2 = UserTest.create(user_id: user1.id, test_id: test2.id)
 user_test3 = UserTest.create(user_id: user1.id, test_id: test3.id)
