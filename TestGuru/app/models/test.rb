@@ -4,7 +4,8 @@ class Test < ApplicationRecord
   has_many :user_tests, dependent: nil
   has_many :users, through: :user_tests
   has_many :questions, dependent: :destroy
-  has_one :creator, class_name: 'User', foreign_key: :created_test_id, dependent: nil, inverse_of: :tests
+
+  belongs_to :creator, class_name: "User", foreign_key: :creator_id, inverse_of: :tests, optional: true
 
   def self.find_by_category(category_title)
     Test.joins(:category)
