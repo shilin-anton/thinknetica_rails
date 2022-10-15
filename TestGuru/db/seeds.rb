@@ -8,8 +8,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(first_name: 'Test', surname: 'Testov', is_admin: false)
-user2 = User.create(first_name: 'TestSecond', surname: 'TestovSecond', is_admin: false)
+user1 = User.create(first_name: 'Test', surname: 'Testov', is_admin: false, email: 'test@test.test')
+user2 = User.create(first_name: 'TestSecond', surname: 'TestovSecond', is_admin: false, email: 'test2@test.test')
 
 cat1 = Category.create(title: 'Backend')
 cat2 = Category.create(title: 'Frontend')
@@ -21,6 +21,10 @@ test3 = Test.create(category_id: cat2.id, title: 'CSS', level: 1)
 test4 = Test.create(category_id: cat2.id, title: 'JavaScript', level: 1, creator_id: user2.id)
 test5 = Test.create(category_id: cat3.id, title: 'HTML', level: 1, creator_id: user1.id)
 test6 = Test.create(category_id: cat3.id, title: 'REST API', level: 1, creator_id: user2.id)
+test7 = Test.create(category_id: cat3.id, title: 'Some test with level 100', level: 100)
+test8 = Test.create(category_id: cat3.id, title: 'Some test with level 4', level: 4)
+test9 = Test.create(category_id: cat3.id, title: 'Some test with level 3', level: 3)
+test10 = Test.create(category_id: cat3.id, title: 'Some test with level 5', level: 5)
 
 user_test1 = UserTest.create(user_id: user1.id, test_id: test1.id)
 user_test2 = UserTest.create(user_id: user1.id, test_id: test2.id)
