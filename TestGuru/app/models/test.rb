@@ -15,9 +15,9 @@ class Test < ApplicationRecord
   scope :easy_tests, -> { where(level: 0..1) }
   scope :medium_tests, -> { where(level: 2..4) }
   scope :hard_tests, -> { where(level: 5..Float::INFINITY) }
-  scope :find_by_category, lambda { |category_title|
-                             joins(:category)
-                               .where('categories.title like ?', "%#{category_title}%")
-                               .order('tests.title DESC').pluck(:title)
-                           }
+  scope :with_category, -> { joins(:category) }
+
+  def self.find_by_category(category_title)
+    Test.with_category.where('categories.title like ?', "%#{category_title}%").order('tests.title DESC').pluck(:title)
+  end
 end
