@@ -1,10 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show destroy]
-  before_action :find_test, only: %i[new index]
-  before_action :find_questions, only: :index
+  before_action :find_test, only: %i[new index create]
 
   def index
-    render :index
+    find_questions
   end
 
   def show
@@ -13,30 +12,27 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    render :new
   end
 
   def create
-    question = Question.create(question_params)
-    question.test_id = params[:test_id]
-
-    question.save
-
-    redirect_to action: :index
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def destroy
-    test_id = @question.test_id
     @question.destroy
 
-    redirect_to action: :index, test_id: test_id
+    redirect_to @question.test
   end
 
   private
 
   def find_test
-    @test = Test.find_by(id: params[:test_id])
-    raise StandardError, 'Test not found!' if @test.blank?
+    @test = Test.find(params[:test_id])
   end
 
   def find_questions
