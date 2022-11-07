@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :find_test, only: %i[new index create]
 
   def index
-    find_questions
+    @questions = @test.questions
   end
 
   def show
@@ -33,10 +33,6 @@ class QuestionsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:test_id])
-  end
-
-  def find_questions
-    @questions = Question.where(test_id: @test.id)
   end
 
   def find_question
