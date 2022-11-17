@@ -1,0 +1,26 @@
+<%= form_with model: @test do |form| %>
+<%= render 'shared/errors', resource: form.object %>
+
+  <p>
+    <%= form.label :id %><br>
+    <%= form.number_field :id %>
+  </p>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :level %><br>
+    <%= form.number_field :level %>
+  </p>
+
+  <p>
+    <%= form.label :category %><br>
+    <%= form.number_field :category_id %>
+  </p>
+
+  <p><%= form.submit %></p>
+  <p><%= link_to 'Back', tests_path() %></p>
+<%end%>

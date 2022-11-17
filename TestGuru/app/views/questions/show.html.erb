@@ -1,0 +1,24 @@
+<h1>Question <% @question.id %> details:</h1>
+
+<p>
+  <strong>Id:</strong>
+  <%= @question.id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @question.body %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @question.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @question.updated_at %>
+</p>
+
+<%= link_to 'Edit question', edit_question_path(@question.id) %>
+<%= link_to 'Back', test_questions_path(@question.test_id) %>

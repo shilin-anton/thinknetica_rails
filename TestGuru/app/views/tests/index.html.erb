@@ -1,0 +1,16 @@
+<h1>LIST OF TESTS </h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Actions</th>
+    <th>Total Questions</th>
+    <th colspan="6"></th>
+  </tr>
+  <%= render @tests %>
+
+  <p><%= link_to :new_test, new_test_path()%></p>
+</table>
