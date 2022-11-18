@@ -1,10 +1,7 @@
 <%= form_with model: [@test, @question] do |form| %>
-<%= render 'shared/errors', resource: form.object %>
+  <%= render 'shared/errors', resource: form.object %>
 
-  <p>
-    <%= form.label :id %><br>
-    <%= form.number_field :id %>
-  </p>
+  <h1><%= question_header(@question) %></h1>
 
   <p>
     <%= form.label :body %><br>
