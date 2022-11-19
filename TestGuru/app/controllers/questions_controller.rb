@@ -1,17 +1,15 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: %i[show destroy]
+  before_action :find_question, only: %i[show edit update destroy]
   before_action :find_test, only: %i[new index create]
 
   def index
     @questions = @test.questions
   end
 
-  def show
-    render plain: @question.inspect
-  end
+  def show; end
 
   def new
-    @question = Question.new
+    @question = @test.questions.build
   end
 
   def create
@@ -20,6 +18,16 @@ class QuestionsController < ApplicationController
       redirect_to @question
     else
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
     end
   end
 
@@ -36,8 +44,7 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = Question.find_by(id: params[:id])
-    raise StandardError, 'Question not found!' if @question.blank?
+    @question = Question.find(params[:id])
   end
 
   def question_params

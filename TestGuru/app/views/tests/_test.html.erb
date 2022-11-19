@@ -1,0 +1,12 @@
+<tr>
+  <td align="center"><%= test.id %></td>
+  <td align="center"><%= test.category.title %></td>
+  <td><%= test.title %></td>
+  <td align="center"><%= test.level %></td>
+  <td>
+    <%= link_to :show, test_path(test.id) %>
+    <%= link_to :edit, edit_test_path(test.id)%>
+    <%= link_to :destroy, test, data: { method: :delete, confirm: "Are you sure?" } %>
+  </td>
+  <td align="center"><%= test.questions.count %></td>
+</tr>
